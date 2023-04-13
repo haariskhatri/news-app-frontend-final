@@ -4,6 +4,7 @@ import Header from "../components/header";
 import IndiaNews from "../components/india";
 import Features from "../components/features";
 import Footer from "../components/footer";
+import { Helmet } from "react-helmet";
 
 export default function India(newscategory) {
   useEffect(() => {
@@ -15,6 +16,7 @@ export default function India(newscategory) {
       loader.classList.add("d-none");
     }, 2500);
   }, [newscategory]);
+
   return (
     <>
       <div className="App">
@@ -30,6 +32,9 @@ export default function India(newscategory) {
           <h5>Loading...</h5>
         </div>
       </div>
+      <Helmet>
+        <title>Up2Date - Stay Informed, Stay Up2Date</title>
+      </Helmet>
       <Header />
       <IndiaNews category={newscategory} />
       <Features />

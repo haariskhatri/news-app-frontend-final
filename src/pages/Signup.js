@@ -1,15 +1,16 @@
 import React from "react";
+
+import SignUp from "../components/signup";
 import LoginHeader from "../components/loginheader";
-import Login from "../components/login";
 import Footer from "../components/footer";
 
-
-export default function LoginPage(){
+export default function SignUpPage(){
     return(
         <>
         <LoginHeader/>
-        <Login/>
+        <SignUp/>
         <Footer/>
+
         </>
     )
 }

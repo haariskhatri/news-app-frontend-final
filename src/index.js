@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -17,6 +17,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import SignUpPage from "./pages/Signup";
 
 const router = createBrowserRouter([
   
@@ -46,8 +47,10 @@ const router = createBrowserRouter([
     path:"/global",
     element:<India category="Global"/>
   },
-
- 
+  {
+    path:'/signup',
+    element:<SignUpPage/>
+  }
 
 ]);
 

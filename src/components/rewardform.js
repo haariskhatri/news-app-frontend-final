@@ -1,21 +1,22 @@
 import React from "react";
 import axios from "axios";
+import {encode,decode} from 'url-encode-decode';
 
 export default function entry() {
   const submitURL = (e) => {
     e.preventDefault();
     const url = document.getElementById("url").value;
     if (url.includes("https://www.indiatoday.in/")) {
-      alert("succes");
+      alert("success");
     } else {
       alert("failed");
     }
   };
 
-  async function getRating(url){
-    const {data} = await axios.post('https://app.ajrakhhouse.com/article',{
-      url
-    },{
+  async function getRating(e){
+    e.preventDefault();
+    const url = encode(document.getElementById('url').value);
+    const {data} = await axios.post(`http://localhost:5000/article/${url}`,{
       headers: {
         'Content-Type': 'application/json'
       }

@@ -526,3 +526,30 @@ a{
   height: auto;
   width: 300px;
 }
+/* User Sign up form */
+.sign-up-form {
+  padding-top: 140px;
+  padding-bottom: 200px;
+  text-align: center;
+}
+#userMailForm {
+  display: none;
+}
+.sign-up-form .biglogo {
+  margin-bottom: 60px;
+}
+.sign-up-form input {
+  border-radius: 7px;
+  width: 100%;
+  padding: 10px 20px;
+  border: 2px solid #1F363D;
+  margin-bottom: 20px;
+}
+
+.sign-up-form button{
+  background-color: #1F363D;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 7px;
+}
+

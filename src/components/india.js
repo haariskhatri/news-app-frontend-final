@@ -30,7 +30,7 @@ export default function IndiaNews(category) {
   const news = [];
   const [newsState, setNewsState] = useState();
   useEffect(() => {
-    const indiaNews = axios.get("http://localhost:4000/news/"+category.category.category);
+    const indiaNews = axios.get("http://localhost:5000/news/"+category.category.category);
     indiaNews
       .then((response) => {
         newsArr = response;
@@ -44,7 +44,7 @@ export default function IndiaNews(category) {
                     <h2>{newsArr.data[i].title}</h2>
                     <p>
                       {newsArr.data[i].text}
-                      <a href={newsArr.data[i].url}>Read More...</a>
+                      <a href={newsArr.data[i].url} target="_blank">Read More...</a>
                     </p>
                   </div>
 

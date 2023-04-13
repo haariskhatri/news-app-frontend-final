@@ -17,21 +17,24 @@ export default function Login() {
     const signerAddress = await signer.getAddress();
 
     try {
-      const nonce = await axios.get("http://localhost:4000/random");
+      const nonce = await axios.get("http://localhost:5000/random");
       const message = "Login with Nonce " + nonce.data;
       const signature = await signer.signMessage(message);
       console.log("Nonce : ", nonce);
+      console.log("Message : " , message);
+      console.log("Signature : " , signature);
+      
       const data = await axios.post(
-        "http://localhost:4000/verify",
+        `http://localhost:5000/verify/${message}/${signature}`,
         {
           message,
           signature,
         },
-        {
-          headers: {
-            "Content-Type": "application/json;charset=UTF-8",
-          },
-        }
+        // {
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        // }
       );
       if (signerAddress == data.data) {
         console.log(data);
