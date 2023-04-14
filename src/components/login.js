@@ -17,7 +17,8 @@ export default function Login() {
     const signerAddress = await signer.getAddress();
 
     try {
-      const nonce = await axios.get("http://localhost:5000/random");
+      //const nonce = await axios.get("http://localhost:5000/random");
+      const nonce = await axios.get("https://app.ajrakhhouse.com:4000/random");
       const message = "Login with Nonce " + nonce.data;
       const signature = await signer.signMessage(message);
       console.log("Nonce : ", nonce);
@@ -25,7 +26,7 @@ export default function Login() {
       console.log("Signature : " , signature);
       
       const data = await axios.post(
-        `http://localhost:5000/verify/${message}/${signature}`,
+        `https://app.ajrakhhouse.com:4000/verify/${message}/${signature}`,
         {
           message,
           signature,
@@ -36,6 +37,18 @@ export default function Login() {
         //   },
         // }
       );
+      // const data = await axios.post(
+      //   `http://localhost:5000/verify/${message}/${signature}`,
+      //   {
+      //     message,
+      //     signature,
+      //   },
+      //   // {
+      //   //   headers: {
+      //   //     "Content-Type": "application/json",
+      //   //   },
+      //   // }
+      // );
       if (signerAddress == data.data) {
         console.log(data);
         navigate("/rewards");
