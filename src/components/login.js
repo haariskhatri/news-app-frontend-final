@@ -18,7 +18,7 @@ export default function Login() {
 
     try {
       //const nonce = await axios.get("http://localhost:5000/random");
-      const nonce = await axios.get("https://app.ajrakhhouse.com:4000/random");
+      const nonce = await axios.get("https://app.ajrakhhouse.com/random");
       const message = "Login with Nonce " + nonce.data;
       const signature = await signer.signMessage(message);
       console.log("Nonce : ", nonce);
