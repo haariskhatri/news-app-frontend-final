@@ -16,7 +16,7 @@ export default function entry() {
   async function getRating(e){
     e.preventDefault();
     const url = encode(document.getElementById('url').value);
-    const {data} = await axios.post(`https://app.ajrakhhouse.com:4000/article/${url}`,{
+    const {data} = await axios.post(`https://app.ajrakhhouse.com/article/${url}`,{
       headers: {
         'Content-Type': 'application/json'
       }
