@@ -26,7 +26,7 @@ export default function Login() {
       console.log("Signature : " , signature);
       
       const data = await axios.post(
-        `https://app.ajrakhhouse.com:4000/verify/${message}/${signature}`,
+        `https://app.ajrakhhouse.com/verify/${message}/${signature}`,
         {
           message,
           signature,
