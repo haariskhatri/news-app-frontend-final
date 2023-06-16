@@ -10,55 +10,55 @@ export default function Login() {
   let navigate = useNavigate();
 
   async function getDetails() {
-    if(window.ethereum){
-    window.ethereum.enable();  
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const signerAddress = await signer.getAddress();
+    if (window.ethereum) {
+      window.ethereum.enable();
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const signerAddress = await signer.getAddress();
 
-    try {
-      //const nonce = await axios.get("http://localhost:5000/random");
-      const nonce = await axios.get("https://app.ajrakhhouse.com/random");
-      const message = "Login with Nonce " + nonce.data;
-      const signature = await signer.signMessage(message);
-      console.log("Nonce : ", nonce);
-      console.log("Message : " , message);
-      console.log("Signature : " , signature);
-      
-      const data = await axios.post(
-        `https://app.ajrakhhouse.com/verify/${message}/${signature}/${signer}`,
-        {
-          message,
-          signature,
-        },
-        // {
-        //   headers: {
-        //     "Content-Type": "application/json",
+      try {
+        //const nonce = await axios.get("http://localhost:5000/random");
+        const nonce = await axios.get("https://up2date.onrender.com/random");
+        const message = "Login with Nonce " + nonce.data;
+        const signature = await signer.signMessage(message);
+        console.log("Nonce : ", nonce);
+        console.log("Message : ", message);
+        console.log("Signature : ", signature);
+
+        const data = await axios.post(
+          `https://up2date.onrender.com/verify/${message}/${signature}/${signer}`,
+          {
+            message,
+            signature,
+          },
+          // {
+          //   headers: {
+          //     "Content-Type": "application/json",
+          //   },
+          // }
+        );
+        // const data = await axios.post(
+        //   `http://localhost:5000/verify/${message}/${signature}`,
+        //   {
+        //     message,
+        //     signature,
         //   },
-        // }
-      );
-      // const data = await axios.post(
-      //   `http://localhost:5000/verify/${message}/${signature}`,
-      //   {
-      //     message,
-      //     signature,
-      //   },
-      //   // {
-      //   //   headers: {
-      //   //     "Content-Type": "application/json",
-      //   //   },
-      //   // }
-      // );
-      if (signerAddress == data.data) {
+        //   // {
+        //   //   headers: {
+        //   //     "Content-Type": "application/json",
+        //   //   },
+        //   // }
+        // );
+        if (signerAddress == data.data) {
+          console.log(data);
+          navigate("/rewards");
+        }
         console.log(data);
-        navigate("/rewards");
+      } catch (error) {
+        console.log(error);
       }
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+
     }
-   
-  }
   }
 
   return (

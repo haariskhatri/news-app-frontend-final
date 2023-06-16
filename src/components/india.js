@@ -31,7 +31,7 @@ export default function IndiaNews(category) {
   const [newsState, setNewsState] = useState();
   useEffect(() => {
     //const indiaNews = axios.get("http://localhost:5000/news/"+category.category.category);
-    const indiaNews = axios.get("https://app.ajrakhhouse.com/news/"+category.category.category);
+    const indiaNews = axios.get("https://up2date.onrender.com/news/" + category.category.category);
     indiaNews
       .then((response) => {
         newsArr = response;
@@ -62,7 +62,7 @@ export default function IndiaNews(category) {
           setNewsState(news)
         }
         else {
-            setNewsState("No news found")
+          setNewsState("No news found")
         }
       })
       .catch((err) => console.log(err));
